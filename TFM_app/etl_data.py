@@ -17,12 +17,12 @@ list_of_files = glob.glob('media/data/*')
 latest_file = max(list_of_files, key=os.path.getctime)
 
 
-
+print("1250")
 data = pd.DataFrame()
 data = pd.read_csv(latest_file,
                         sep=',', encoding='UTF-8', low_memory=False)
 os.remove('media/data/sensor.csv')
-
+print("1251")
 def registros():
     # count number of rows
     registros = data.shape[0]
