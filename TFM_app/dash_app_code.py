@@ -40,14 +40,15 @@ app_exploratory_data_analysis.css.append_css({
     "external_url": external_stylesheets
 })
 
-
-print('1302')
 print('1300')
+plot_sensors()
+print('1302')
+
 plot_missing_values()
 print('1300.1')
 pie_plot_machine_status()
 print('1300.2')
-plot_sensors()
+
 print('1300.3')
 corr_heat_map()
 print('1301')
