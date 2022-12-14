@@ -40,6 +40,8 @@ app_exploratory_data_analysis.css.append_css({
     "external_url": external_stylesheets
 })
 
+
+print('1302')
 print('1300')
 plot_missing_values()
 print('1300.1')
@@ -51,9 +53,6 @@ corr_heat_map()
 print('1301')
 df = html_table_descripcion()
 df_datos = melt_data()
-#df_datos_clean = data_clean_df()
-print('1302')
-#evolucion()
 app_exploratory_data_analysis.layout = html.Div([
 
     html.Div([
