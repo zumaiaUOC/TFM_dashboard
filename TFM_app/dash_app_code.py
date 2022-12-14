@@ -8,22 +8,12 @@ import plotly.graph_objs as go
 import pandas as pd
 from django_plotly_dash import DjangoDash
 import dash_bootstrap_components as dbc
-
 from dash.dash_table.Format import Format, Group, Scheme
 from dash.dash_table import FormatTemplate
-
-
 from datetime import datetime
 import pandas as pd
 import glob
 import os
-import plotly.express as px
-import json
-
-#from django_app.calculos import *
-
-from datetime import datetime as dt
-
 from .etl_data import *
 
 
@@ -51,8 +41,6 @@ app_exploratory_data_analysis.css.append_css({
 })
 
 print('1300')
-
-
 plot_missing_values()
 print('1300.1')
 pie_plot_machine_status()

@@ -26,25 +26,25 @@ def registros():
     registros = data.shape[0]
     #print("¿Cuántas columnas en el dataset hay? ", registros)
     return registros
-
+print("1252")
 def variables():
     # count number of rows
     variables = data.shape[1]
     #print("¿Cuántos variables en el dataset hay? ", variables)
     return variables
-
+print("1253")
 def sensores():
     # count number of columns that column names begin with 'sensor'
     sensores = data.filter(regex='sensor').shape[1]
     #print("¿Cuántos sensores de prueba hay? ", sensores)
     return sensores
-
+print("1254")
 # number of missing values in total
 def missing_values():
     missing_values = data.isnull().sum().sum()
     #print("¿Cuántos valores faltantes hay en el dataset? ", missing_values)
     return missing_values
-
+print("1255")
 # we see that one column (sensor_15) has no values therefore we will delete that column 
 data_clean = data.drop('sensor_15', axis = 1)
 # Al sensor 50 también le falta el 34,95% de los datos, así que también eliminaremos esa columna. 
@@ -54,11 +54,11 @@ data_clean = data_clean.drop('sensor_50', axis =1)
 data_clean = data_clean.drop('Unnamed: 0', axis =1)
 data_clean = data_clean.drop('sensor_00', axis =1) 
 data_clean = data_clean.drop('sensor_51', axis =1) 
-
+print("1256")
 def data_clean_df():
     return data_clean
 
-
+print("1257")
 def plot_missing_values():
     # plot a heatmap of the missing values
     plt.figure(figsize=(12,10))
