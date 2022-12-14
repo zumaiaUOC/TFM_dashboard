@@ -4,16 +4,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import glob
 import seaborn as sns
-from zipfile import ZipFile
+
+#from zipfile import ZipFile
 # Create a ZipFile Object and load sample.zip in it
-with ZipFile('media/data/sensor.zip', 'r') as zipObj:
+#with ZipFile('media/data/sensor.zip', 'r') as zipObj:
    # Extract all the contents of zip file in current directory
-   zipObj.extractall('media/data/')
+#   zipObj.extractall('media/data/')
 
 list_of_files = glob.glob('media/data/*')
-
-
-
 latest_file = max(list_of_files, key=os.path.getctime)
 
 
@@ -21,7 +19,7 @@ print("1250")
 data = pd.DataFrame()
 data = pd.read_csv(latest_file,
                         sep=',', encoding='UTF-8', low_memory=False)
-os.remove('media/data/sensor.csv')
+#os.remove('media/data/sensor.csv')
 print("1251")
 def registros():
     # count number of rows
