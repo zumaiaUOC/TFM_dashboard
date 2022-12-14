@@ -57,11 +57,11 @@ plot_missing_values()
 pie_plot_machine_status()
 plot_sensors()
 corr_heat_map()
-
+print('1301')
 df = html_table_descripcion()
 df_datos = melt_data()
 #df_datos_clean = data_clean_df()
-
+print('1302')
 #evolucion()
 app_exploratory_data_analysis.layout = html.Div([
 
