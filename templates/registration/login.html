@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TFM-OSCAR ROJO- Mantenimiento predictivo - Login</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
+</head>
+<body>
+    <main>
+        <a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
+        <h2>Identifícate</h2>
+        <form method="post">
+
+        <!-- In Django csrf token needs to be provided before login form -->
+        <!-- For security reason it's mandatory in Django -->
+            {% csrf_token %}
+            <!-- import Default login form for Django -->
+            {{ form.as_p }}
+            <br>
+            <br/>
+            <button type="submit"><h5><strong>identificate</h5></button></button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,254 @@
+
+
+body {
+  # max-width: 900px;
+  background-color: black;
+  margin: 3%;
+}
+
+.card_container {
+  border-radius: 5px;
+  background-color: #eeeeee;
+  margin: 25px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px #eeeeee;
+}
+
+.create_container {
+  border-radius: 5px;
+  background-color: #eeeeee;
+  margin: 18px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px #eeeeee;
+}
+
+.create_container1 {
+  border-radius: 5px;
+  background-color: #eeeeee;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px #eeeeee;
+}
+
+.dcc_compon {
+  margin: 0;
+  padding: 5px;
+  width: calc(100%-40px);
+}
+
+.fix_label {
+font-size: 20px;
+  margin: 0;
+  padding: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  width: calc(100%-40px);
+}
+
+.flex-display {
+  display: flex;
+}
+
+.container-display {
+  display: flex;
+}
+
+#header {
+  align-items: center;
+}
+
+#refresh-data {
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+  text-transform: none;
+  font-size: 20px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 30px;
+}
+
+#title {
+  text-align: center;
+}
+
+#title1 {
+  text-align: center;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.Select-control, .Select-menu-outer, .Select-multi-value-wrapper, .select-up, .is-open .Select-control {
+  background-color: #eeeeee;
+  color: black;
+
+}
+
+.Select-control{
+  border: 0.5px solid black;
+}
+
+.has-value.Select--single>.Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value-label .Select--multi {
+  color: black;
+  display: none !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px !important;
+  display: block !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #eeeeee !important;
+  border-radius: 10px !important;
+  display: block !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #192444;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black !important;
+}
+
+.Select-menu-outer {
+  display: block !important;
+}
+#outer {
+  width: 100%;
+  text-align: center;
+}
+
+.inner {
+  display: inline-block;
+}
+
+
+/* Dash Date Picker
+https://github.com/plotly/dash-core-components/blob/557d2fd4987c437265d220f71ee69c2d0616526c/dash_core_components/react-dates%4012.3.0.css
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
+.DateInput_input,
+.DateInput_input_1 {
+  color: inherit !important;
+  text-align: center;
+  font-size: inherit ! important;
+  Height: 25px !important;
+  Width: 100% !important;
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+
+.DateInput {
+  color: inherit !important;
+  width: 95px !important;
+}
+
+.DateRangePickerInput_arrow_svg,
+.DateRangePickerInput_arrow_svg_1 {
+  Height: 10px !important;
+  Width: 10px !important;
+}
+
+/* Calendar date start and end */
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: rgb(41, 56, 55) !important;
+  border: 1px double rgb(56, 41, 41) !important;
+  color: rgb(253, 0, 0) !important;
+}
+
+/* Calendar in between start and end date */
+.CalendarDay__selected_span {
+  background: rgb(93, 113, 120) !important;
+  border: 1px double rgb(93, 113, 120) !important;
+  color: rgb(255, 0, 0) !important;
+}
+
+.CalendarDay__selected_span:active,
+.CalendarDay__selected_span:hover {
+  background: rgb(85, 57, 57) !important;
+  border: 1px double rgb(85, 57, 57) !important;
+  color: rgb(255, 0, 0) !important;
+}
+
+/* Calendar default help button */
+.DayPickerKeyboardShortcuts_show__bottomRight::before {
+  border-top: 26px solid transparent;
+  border-right: 33px solid rgb(93, 113, 120) !important;
+  bottom: 0;
+  right: 0;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight:hover .DayPickerKeyboardShortcuts_show__bottomRight:active {
+  border-top: 26px solid transparent;
+  border-right: 33px solid rgb(57, 81, 85) !important;
+  bottom: 0;
+  right: 0;
+}
+
+/* Dash Dropdown
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
+.VirtualizedSelectOption {
+  white-space: nowrap;
+}
+
+/* Dash Table
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
+tr:hover {
+  background-color: rgb(104, 134, 132) !important;
+}
+
+/* Img
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  border-style: none;
+}
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Calisto MT" !important;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  vertical-align: central;
+  text-align: left;
+  font-weight: 350;
+  color: #ffffff;
+}
+
+p {
+  font-weight: 300;
+}
+
+@media print {
+  footer {
+    page-break-after: always;
+  }
+}
+
+form-label {
+  color:#000000;
+}

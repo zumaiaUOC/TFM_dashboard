@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Cuadro de Mando</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
+	
+</head>
+    <body>
+        <main>
+                <a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
+                <br/>
+                <br/>
+                <h3>Importar fichero</h3>
+                <br/>
+                <br/>
+                <!-- In Django csrf token needs to be provided before login form -->
+                <!-- For security reason it's mandatory in Django -->
+
+                <form action="{% url "import_data_file" %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file"
+                    title="Upload Users file"
+                    name="users_file"
+                    style="border: 1px solid black; padding: 5px;"
+                    required="required">
+                <p>
+                <input type="submit"
+                    value="Cargar"
+                    style="border: 1px solid white; padding:5px; border-radius: 2px; cursor: pointer;">
+                </form>
+
+                <p></p>
+                <hr>
+
+        </main>
+
+    </body>
+</html>

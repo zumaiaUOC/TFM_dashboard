@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Cuadro de Mando</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
+	
+</head>
+<body>
+
+	<main>
+		<!-- If successful login -->
+		{% if user.is_authenticated %}
+
+		<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
+		<br/>
+		<h4>¡Hola {{ user.username }}!.</h4>
+		<h5>¡Bienvenido a mi TFM del Master de Ciencia de Datos de la UOC.</h5>
+		<h2 style="text-align: center;">Mantenimiento predictivo.</p></h2>
+		<h3 style="text-align: center;">Predicción del fallo de máquinas de producción a partir de datos de un sistema de sensores.</h3>
+		<br/>
+
+		<h6>Indicadores</h6>
+		<button onclick="location.href='exploratory_data_analysis'" target="_blank"  type="button"><h6><strong>EDA</strong>  Expl. Data Analysis</h6></button>
+		<button onclick="location.href='visualizacion'" target="_blank"  type="button"><h6><strong>Visualización</strong></h6></button>
+		<button onclick="location.href='datos'" type="button"><h5><strong>Comparativa sensores</strong></h5></button>
+		<!--<button onclick="window.open('exploratory_data_analysis', '_blank')" target="_blank" type="button"><h6><strong>INDICADORES</strong></h6></button>-->
+		<a href="{% static 'TFM/TFM.pdf' %}" target="_blank"><button type="button"><h6><strong>TFM-OSCAR ROJO</strong></h6></button></a>
+		
+		<!--<button onclick="location.href='facturacion'" type="button"><h5><strong>Facturacion</strong></h5></button>-->
+		<!--<button onclick="location.href='facturacion_agente'" type="button"><h5><strong>Facturacion Cliente</strong></h5></button>-->
+		<!--<button onclick="location.href='ingresos'" type="button"><h5><strong>Ingresos</strong></h5></button>-->
+		<!--<button onclick="location.href='salarios'" type="button"><h5><strong>Salarios</strong></h5></button>-->
+		<br/>
+		<h6>Carga de datos</h6>
+		<a href="{% url 'import_data_file' %}"><button type="button"><h6><strong>Importar archivos</strong></h6></button></a>
+		
+
+		<br/>
+
+		<br/>
+		<button onclick="window.location.href = '{% url 'logout' %}';"><h6><strong>cerrar la sesión</strong></h6></button></button>
+
+
+		<!-- If not successful login -->
+		{% else %}
+		<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
+		<br/>
+		<h5>¡Bienvenido a mi TFM del Master de Ciencia de Datos de la UOC.</h5>
+		<h2 style="text-align: center;">Mantenimiento predictivo.</h2>
+		<h3 style="text-align: center;">Predicción del fallo de máquinas de producción a partir de datos de un sistema de sensores.</h3>
+		<br/>
+		<h5>¡No estás registrado!, Para habilitar los enlaces, por favor identificate .</h5>
+		
+		<br/>
+
+		<h6>Indicadores</h6>
+		<a href="#"><button type="button"><h6><strong>EDA</strong>  Expl. Data Analysis</h6></button></a>
+		<a href="#"><button type="button"><h6><strong>Visualización</strong></h6></button></a>
+		<a href="#"><button type="button"><h6><strong>Comparativa sensores</strong></h6></button></a>
+		<a href="#"><button type="button"><h6><strong>TFM-OSCAR ROJO</strong></h6></button></a>
+		<!--<a href="#"><button type="button"><h5><strong>Facturacion</strong></h5></button></a>-->
+		<!--<a href="#"><button type="button"><h5><strong>Facturacion Cliente</strong></h5></button></a>-->
+		<!--<a href="#"><button type="button"><h5><strong>Ingresos</strong></h5></button></a>-->
+		<!--<a href="#"><button type="button"><h5><strong>Datos</strong></h5></button></a>-->
+		<br/>
+		<h6>Carga de datos</h6>
+		<a href="#"><button type="button"><h6><strong>Importar archivos</strong></h6></button></a>
+
+		<br/>
+
+		<br/>
+		<button onclick="window.location.href = '{% url 'login' %}';"><h6><strong>identificate</h6></button></button>
+
+
+		{% endif %}
+	</main>
+
+</body>
+</html>
+
