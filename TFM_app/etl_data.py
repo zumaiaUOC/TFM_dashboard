@@ -5,6 +5,13 @@ import numpy as np
 import glob
 import seaborn as sns
 
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import Normalizer
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import RobustScaler
+from sklearn.cluster import KMeans
+
 #from zipfile import ZipFile
 # Create a ZipFile Object and load sample.zip in it
 #with ZipFile('media/data/sensor.zip', 'r') as zipObj:
@@ -166,3 +173,47 @@ def melt_data():
     
     corr_data_clean['timestamp'] = pd.to_datetime(corr_data_clean['timestamp'])
     return corr_data_clean
+
+
+
+# Split into training data and test data
+X = data_clean[['sensor_02', 'sensor_04', 'sensor_06', 'sensor_10', 'sensor_11', 'sensor_12']]
+y = data_clean['stat']
+
+# train test split with 60% training data and 40% test data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
+
+#fill NA's with forward fill propogation
+X_train = X_train.fillna(method='ffill')
+X_test = X_test.fillna(method='ffill')
+
+# normalize data 
+normalize = Normalizer()
+X_train = normalize.fit_transform(X_train)
+X_train = pd.DataFrame(X_train)
+X_train.columns = X.columns
+
+# Kmeans clustering
+# visualize errors based on number of clusters
+model = KMeans(n_init=10, max_iter=300)
+model.fit(X_train, y_train)
+
+# make predictions on validation dataset
+predictions = model.predict(X_test)
+
+# pickle the model
+pd.to_pickle(model, 'media/model.pickle')
+
+# unpickle the model
+model = pd.read_pickle('media/model.pickle')
+
+# take input from user
+#sensor_02 = float(input('Ingrese el valor del sensor 02: '))
+#sensor_04 = float(input('Ingrese el valor del sensor 04: '))
+#sensor_06 = float(input('Ingrese el valor del sensor 06: '))
+#sensor_10 = float(input('Ingrese el valor del sensor 10: '))
+#sensor_11 = float(input('Ingrese el valor del sensor 11: '))
+#sensor_12 = float(input('Ingrese el valor del sensor 12: '))
+
+#result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]]) # make prediction
+#print(result)

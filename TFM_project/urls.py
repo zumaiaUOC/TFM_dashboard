@@ -17,9 +17,8 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView, RedirectView
 from django.conf import settings
-from TFM_app import views
+from TFM_app import views, dash_app_code
 from django.conf.urls.static import static
-from TFM_app import dash_app_code
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,5 +35,7 @@ urlpatterns = [
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico')),
     path('import_data_file/', views.import_data_file,
          name="import_data_file"),
+    path('predict/', views.predict_chances, name='submit_prediction'),
+    path('results/', views.view_results, name='results'),
  
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
