@@ -53,7 +53,9 @@ print('1300.3')
 #corr_heat_map()
 print('1301')
 df = html_table_descripcion()
+print("1302")
 df_datos = melt_data()
+print("1303")
 #df_datos_1 = melt_data_1()
 
 app_exploratory_data_analysis.layout = html.Div([
@@ -341,7 +343,7 @@ app_exploratory_data_analysis.layout = html.Div([
 
 
 
-
+print("1304")
 ############################################################################################
 #### VISUALIZACIÓN DE LOS DATOS EN EL NAVEGADOR ############################################
 #
@@ -646,7 +648,7 @@ app_visualizacion.layout = html.Div([
 ], className="container")
 
 
-
+print("1304")
 ###############################################
 ###############################################
 

@@ -63,8 +63,13 @@ def predict_chances(request):
         PredResults.objects.create(sensor_02=sensor_02, sensor_04=sensor_04, sensor_06=sensor_06,
                                    sensor_10=sensor_10, sensor_11=sensor_11, sensor_12=sensor_12, stat=stat)
 
-        return JsonResponse({'result': stat, 'sensor_02': sensor_02,
-                             'sensor_04': sensor_04, 'sensor_06': sensor_06, 'sensor_10': sensor_10, 'sensor_11': sensor_11, 'sensor_12': sensor_12},
+        return JsonResponse({'result': stat, 
+                             'sensor_02': sensor_02,
+                             'sensor_04': sensor_04, 
+                             'sensor_06': sensor_06, 
+                             'sensor_10': sensor_10, 
+                             'sensor_11': sensor_11, 
+                             'sensor_12': sensor_12},
                             safe=False)
 
 
