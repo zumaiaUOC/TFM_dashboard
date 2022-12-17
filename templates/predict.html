@@ -1,6 +1,14 @@
-{% extends "base.html" %}
-
-{% block main %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Cuadro de Mando</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
+	
+</head>
+<body>
+<main>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -102,4 +110,6 @@
     })
 </script>
 
-{% endblock %}
+</main>
+</body>
+</html>

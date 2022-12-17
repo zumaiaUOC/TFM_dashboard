@@ -59,6 +59,7 @@ def predict_chances(request):
         result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]])
 
         stat = result[0]
+        print("stat", stat)
 
         PredResults.objects.create(sensor_02=sensor_02, sensor_04=sensor_04, sensor_06=sensor_06,
                                    sensor_10=sensor_10, sensor_11=sensor_11, sensor_12=sensor_12, stat=stat)
