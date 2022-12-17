@@ -179,7 +179,7 @@ def melt_data():
 # Split into training data and test data
 X = data_clean[['sensor_02', 'sensor_04', 'sensor_06', 'sensor_10', 'sensor_11', 'sensor_12']]
 y = data_clean['machine_status']
-prin("ml-split")
+print("ml-split")
 # train test split with 60% training data and 40% test data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
 
