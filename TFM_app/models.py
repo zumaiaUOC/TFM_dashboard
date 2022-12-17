@@ -9,8 +9,8 @@ class PredResults(models.Model):
     sensor_10 = models.IntegerField()
     sensor_11 = models.IntegerField()
     sensor_12 = models.IntegerField()
-    machine_status = models.CharField(max_length=30)
+    stat = models.CharField(max_length=30)
     
 
     def __str__(self):
-        return self.machine_status
+        return self.stat

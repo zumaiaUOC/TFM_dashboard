@@ -5,8 +5,10 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 import os
+import pandas as pd
 # Create your views here.
 from .models import PredResults
+from django.http import JsonResponse
 
 
 def import_data_file(request):

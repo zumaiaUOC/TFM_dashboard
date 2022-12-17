@@ -178,10 +178,18 @@ def melt_data():
 
 # Split into training data and test data
 X = data_clean[['sensor_02', 'sensor_04', 'sensor_06', 'sensor_10', 'sensor_11', 'sensor_12']]
-y = data_clean['stat']
+y = data_clean['machine_status']
 
 # train test split with 60% training data and 40% test data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
+
+X_train_y_train = pd.concat([X_train, y_train], axis=0)
+
+def melt_data_1():
+    # select only the sensor columns with major correlation
+    corr_data_clean = X_train_y_train
+    return corr_data_clean
+
 
 #fill NA's with forward fill propogation
 X_train = X_train.fillna(method='ffill')
