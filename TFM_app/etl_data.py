@@ -179,7 +179,7 @@ def melt_data():
 # Split into training data and test data
 X = data_clean[['sensor_02', 'sensor_04', 'sensor_06', 'sensor_10', 'sensor_11', 'sensor_12']]
 y = data_clean['machine_status']
-
+prin("ml-split")
 # train test split with 60% training data and 40% test data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
 
@@ -190,28 +190,30 @@ def melt_data_1():
     corr_data_clean = X_train_y_train
     return corr_data_clean
 
-
+print("ML-fill")
 #fill NA's with forward fill propogation
 X_train = X_train.fillna(method='ffill')
 X_test = X_test.fillna(method='ffill')
-
+print("ML-normalize")
 # normalize data 
 normalize = Normalizer()
+print("ml-fit.transform")
 X_train = normalize.fit_transform(X_train)
 X_train = pd.DataFrame(X_train)
 X_train.columns = X.columns
-
+print("ml-model")
 # Kmeans clustering
 # visualize errors based on number of clusters
 model = KMeans(n_init=10, max_iter=300)
+print("ml-model-transform")
 model.fit(X_train, y_train)
-
+print("ml-predictions")
 # make predictions on validation dataset
 predictions = model.predict(X_test)
-
+print("ml-pickel model")
 # pickle the model
 pd.to_pickle(model, 'media/model.pickle')
-
+print("ML-unpickle model")
 # unpickle the model
 model = pd.read_pickle('media/model.pickle')
 
