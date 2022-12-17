@@ -54,7 +54,7 @@ print('1300.3')
 print('1301')
 df = html_table_descripcion()
 df_datos = melt_data()
-df_datos_1 = melt_data_1()
+#df_datos_1 = melt_data_1()
 
 app_exploratory_data_analysis.layout = html.Div([
 
@@ -662,7 +662,7 @@ print(df_datos.head(5))
 print(df_datos.info())
 df_datos.set_index('timestamp', inplace=True)
 
-names = df_datos_1.columns
+names = df_datos.columns
 print(names)
 
 app_datos.layout = html.Div(
@@ -697,12 +697,12 @@ def update_output(ddl_x_value, ddl_y_value):
     figure={
         'data': [
             go.Scatter(
-                x=df_datos_1[df_datos_1['machine_status'] == cls][ddl_x_value],
-                y=df_datos_1[df_datos_1['machine_status'] == cls][ddl_y_value],
+                x=df_datos[df_datos['machine_status'] == cls][ddl_x_value],
+                y=df_datos[df_datos['machine_status'] == cls][ddl_y_value],
                 mode='markers',
                 marker={ 'size': 15 },
                 name=cls
-            ) for cls in df_datos_1['machine_status'].unique()
+            ) for cls in df_datos['machine_status'].unique()
         ],
         'layout': 
             go.Layout(
