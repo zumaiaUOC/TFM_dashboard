@@ -219,12 +219,14 @@ print("ML-unpickle model")
 model = pd.read_pickle('media/model.pickle')
 
 # take input from user
-#sensor_02 = float(input('Ingrese el valor del sensor 02: '))
-#sensor_04 = float(input('Ingrese el valor del sensor 04: '))
-#sensor_06 = float(input('Ingrese el valor del sensor 06: '))
-#sensor_10 = float(input('Ingrese el valor del sensor 10: '))
-#sensor_11 = float(input('Ingrese el valor del sensor 11: '))
-#sensor_12 = float(input('Ingrese el valor del sensor 12: '))
+sensor_02 = float(input('Ingrese el valor del sensor 02: '))
+sensor_04 = float(input('Ingrese el valor del sensor 04: '))
+sensor_06 = float(input('Ingrese el valor del sensor 06: '))
+sensor_10 = float(input('Ingrese el valor del sensor 10: '))
+sensor_11 = float(input('Ingrese el valor del sensor 11: '))
+sensor_12 = float(input('Ingrese el valor del sensor 12: '))
 
-#result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]]) # make prediction
-#print("El resultado es: ", result)
+result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]]) # make prediction
+print("El resultado es: ", result)
+print("El resultado es: ", result[0])
+print("result", result)

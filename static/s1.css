@@ -423,10 +423,10 @@ label > .label-body {
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
-  list-style: circle inside;
+  list-style: none
 }
 ol {
-  list-style: decimal inside;
+  list-style: none
 }
 ol,
 ul {
@@ -768,4 +768,10 @@ p {
   footer {
     page-break-after: always;
   }
+}
+
+.bg-light {
+  background-color: darkgray !important;
+  color: white !important;
+
 }

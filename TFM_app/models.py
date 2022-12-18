@@ -9,7 +9,8 @@ class PredResults(models.Model):
     sensor_10 = models.IntegerField()
     sensor_11 = models.IntegerField()
     sensor_12 = models.IntegerField()
-    stat = models.CharField(max_length=30)
+    stat = models.IntegerField()
+    #stat = models.CharField(max_length=30)
     
 
     def __str__(self):

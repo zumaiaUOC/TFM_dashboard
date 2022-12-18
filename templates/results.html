@@ -1,14 +1,22 @@
+{% load plotly_dash %}
 {% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Cuadro de Mando</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Results</title>
 	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
-	
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+
+	{% plotly_header %}
 </head>
 <body>
-<main>
+<main style="
+    background-color: black;
+    color: white;">
+
+    <a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
+    <br>
+    <br>
     <div class="container pt-5">
         <div class="row">
 
@@ -38,7 +46,7 @@
                         <td>{{ data.sensor_10 }}</td>
                         <td>{{ data.sensor_11 }}</td>
                         <td>{{ data.sensor_12 }}</td>
-                        <td>{{ data.machine_status }}</td>
+                        <td>{{ data.stat }}</td>
                     </tr>
                 {% endfor %}
 

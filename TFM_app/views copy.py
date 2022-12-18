@@ -9,7 +9,6 @@ import pandas as pd
 # Create your views here.
 from .models import PredResults
 from django.http import JsonResponse
-import numpy as np
 
 
 def import_data_file(request):
@@ -44,7 +43,7 @@ def predict(request):
 
 def predict_chances(request):
 
-    if request.method == "POST":
+    if request.POST.get('action') == 'post':
 
         # Receive data from client
         sensor_02 = int(request.POST.get('sensor_02'))
@@ -54,43 +53,34 @@ def predict_chances(request):
         sensor_11 = int(request.POST.get('sensor_11'))
         sensor_12 = int(request.POST.get('sensor_12'))
 
-        try:
+        # Unpickle model
+        model = pd.read_pickle(r"media/model.pickle")
+        # Make prediction
+        result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]])
 
-            model = pd.read_pickle(r"media/model.pickle")
+        stat = result[0]
+        print("stat", stat)
+        print("sensor_02", sensor_02)
+        print("sensor_04", sensor_04)
+        print("sensor_06", sensor_06)
+        print("sensor_10", sensor_10)
+        print("sensor_11", sensor_11)
+        print("sensor_12", sensor_12)
+        
 
-            print(float(sensor_02), float(sensor_04), float(sensor_06), float(sensor_10), float(
-                sensor_11), float(sensor_12))
+        PredResults.objects.create(sensor_02=sensor_02, sensor_04=sensor_04, sensor_06=sensor_06,
+                                   sensor_10=sensor_10, sensor_11=sensor_11, sensor_12=sensor_12, stat=stat)
 
-            x = np.array([float(sensor_02), float(sensor_04), float(sensor_06), float(sensor_10), float(
-                sensor_11), float(sensor_12)])
-
-            x = x.reshape(1, -1)
-
-            print(x)
-            result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]])
-            print(result)
-            
-        except Exception as e:
-            print(e)
-            print("something went wrong")
-
-        res = ''
-        if result[0] == 0:
-            res = 'No Disease'
-        elif result[0] == 1:
-            res = 'You Have Disease'
-        else:
-            res = 'resto'
-
-        print(res)
-        context = {
-            'data': result[0],
-            'q': res,
-        }
-        return render(request, 'results.html', context)
-
-    return render(request, 'predict.html')
-
+        return render ({'result': stat, 
+                             'sensor_02': sensor_02,
+                             'sensor_04': sensor_04, 
+                             'sensor_06': sensor_06, 
+                             'sensor_10': sensor_10, 
+                             'sensor_11': sensor_11, 
+                             'sensor_12': sensor_12},
+                            safe=False)
+    else:
+        return JsonResponse({'result': 'Error'})
 
 
 def view_results(request):

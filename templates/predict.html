@@ -1,3 +1,4 @@
+{% load plotly_dash %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -9,6 +10,7 @@
 </head>
 <body>
 <main>
+<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -80,7 +82,7 @@
         e.preventDefault();
         $.ajax({
             type:'POST',
-            url:'{% url "predict:submit_prediction" %}',
+            url:'{% url "submit_prediction" %}',
             data:{
                 sensor_02:$('#sensor_02').val(),
                 sensor_04:$('#sensor_04').val(),
