@@ -1,6 +1,3 @@
-
-from multiprocessing.connection import Client
-from signal import siginterrupt
 import dash
 from dash.dependencies import Output, Input
 from dash import dcc, html, dash_table, callback, Dash
@@ -8,11 +5,7 @@ import plotly.graph_objs as go
 import pandas as pd
 from django_plotly_dash import DjangoDash
 import dash_bootstrap_components as dbc
-from dash.dash_table.Format import Format, Group, Scheme
-from dash.dash_table import FormatTemplate
-from datetime import datetime
 import pandas as pd
-import glob
 import os
 from .etl_data import *
 
@@ -54,9 +47,7 @@ print('1300.3')
 print('1301')
 df = html_table_descripcion()
 print("1302")
-df_datos = melt_data()
 print("1303")
-#df_datos_1 = melt_data_1()
 
 app_exploratory_data_analysis.layout = html.Div([
 
@@ -659,13 +650,10 @@ app_datos.css.append_css({
     "external_url": external_stylesheets
 })
 
+df_datos = melt_data()
 print('DATOS')
-print(df_datos.head(5))
-print(df_datos.info())
-df_datos.set_index('timestamp', inplace=True)
-
 names = df_datos.columns
-print(names)
+print("nombre de las columnas: ", names)
 
 app_datos.layout = html.Div(
     [

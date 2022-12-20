@@ -170,26 +170,21 @@ l = ['timestamp', 'machine_status'] + l
 def melt_data():
     # select only the sensor columns with major correlation
     corr_data_clean = data_clean[l]
-    
-    corr_data_clean['timestamp'] = pd.to_datetime(corr_data_clean['timestamp'])
-    return corr_data_clean
+    sample_data_clean_sample = corr_data_clean.sample(frac=0.5, replace=True, random_state=1)
+    sample_data_clean_sample['timestamp'] = pd.to_datetime(sample_data_clean_sample['timestamp'])
+    return sample_data_clean_sample
 
 
 
 # Split into training data and test data
 X = data_clean[['sensor_02', 'sensor_04', 'sensor_06', 'sensor_10', 'sensor_11', 'sensor_12']]
 y = data_clean['stat']
+print("y.head")
 print(y.head())
 print("ml-split")
 # train test split with 60% training data and 40% test data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
-
-X_train_y_train = pd.concat([X_train, y_train], axis=0)
-
-def melt_data_1():
-    # select only the sensor columns with major correlation
-    corr_data_clean = X_train_y_train
-    return corr_data_clean
+print(y_train.head())
 
 print("ML-fill")
 #fill NA's with forward fill propogation
@@ -219,14 +214,14 @@ print("ML-unpickle model")
 model = pd.read_pickle('media/model.pickle')
 
 # take input from user
-sensor_02 = float(input('Ingrese el valor del sensor 02: '))
-sensor_04 = float(input('Ingrese el valor del sensor 04: '))
-sensor_06 = float(input('Ingrese el valor del sensor 06: '))
-sensor_10 = float(input('Ingrese el valor del sensor 10: '))
-sensor_11 = float(input('Ingrese el valor del sensor 11: '))
-sensor_12 = float(input('Ingrese el valor del sensor 12: '))
+# sensor_02 = float(input('Ingrese el valor del sensor 02: '))
+# sensor_04 = float(input('Ingrese el valor del sensor 04: '))
+# sensor_06 = float(input('Ingrese el valor del sensor 06: '))
+# sensor_10 = float(input('Ingrese el valor del sensor 10: '))
+# sensor_11 = float(input('Ingrese el valor del sensor 11: '))
+# sensor_12 = float(input('Ingrese el valor del sensor 12: '))
 
-result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]]) # make prediction
-print("El resultado es: ", result)
-print("El resultado es: ", result[0])
-print("result", result)
+# result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]]) # make prediction
+# print("El resultado es: ", result)
+# print("El resultado es: ", result[0])
+# print("result", result)
