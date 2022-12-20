@@ -99,14 +99,6 @@
         En el navegador:
             http://13.38.218.134:8000/
 
-## Registros:
-
-    media/registro.csv
-
-![ubicación registro](static/registros.png)
-
-![ubicación registro](static/registros2.png)
-
 
 
 ## Contraseña administrador
