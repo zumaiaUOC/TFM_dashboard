@@ -1,18 +1,17 @@
-{% load plotly_dash %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Datos</title>
-	<link rel="stylesheet" type="text/css" href="{% static '001_dosis.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+{% load plotly_dash %}
+{% block title %}
+TFM-OSCAR ROJO- Mantenimiento predictivo -  Comparativa Sensores
 
-	{% plotly_header %}
-</head>
-<body>
+{% endblock %}
+<!-- carsosel start  -->
+<!-- ____________________________________________________________________________________ -->
+
+
+{% block main %}
 	<main style="background-color: black">
-		<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
+		<!--<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>-->
 		<!-- If successful login -->
 		{% if user.is_authenticated %}
         
@@ -23,18 +22,19 @@
 
 		<!-- If not successful login -->
 		{% else %}
+		<br/>
+		<br/>
         <h3>Datos</h3>
 		<h3>No está conectado.</h3>
 		<h3>Por favor, inicie sesión para ver las parcelas.</h3>
 		<br/>
 		<br/>
-		<button onclick="window.location.href = '{% url 'login' %}';">login</button>
+		<button onclick="window.location.href = '{% url 'login' %}';"><h6><strong>Identificate</strong></h6></button>
 
 		{% endif %}
 
 	</main>
 
-</body>
-{% plotly_footer %}
-</html>
-<!--Actuación en el panel de controlHTML-->
+	{% plotly_footer %}
+
+{% endblock %}

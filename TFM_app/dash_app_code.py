@@ -23,7 +23,7 @@ print('1200')
 your_path = 'media/data/'
 files = os.listdir(your_path)
 
-external_stylesheets = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+external_stylesheets = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 
 
 # Important: Define Id for Plotly Dash integration in Django
@@ -35,19 +35,16 @@ app_exploratory_data_analysis.css.append_css({
 
 
 
-print('1302')
-print('1300')
 #plot_missing_values()
-print('1300.1')
+
 #pie_plot_machine_status()
-print('1300.2')
+
 #plot_sensors()
-print('1300.3')
+
 #corr_heat_map()
-print('1301')
+
 df = html_table_descripcion()
-print("1302")
-print("1303")
+
 
 app_exploratory_data_analysis.layout = html.Div([
 
@@ -334,7 +331,6 @@ app_exploratory_data_analysis.layout = html.Div([
 
 
 
-print("1304")
 ############################################################################################
 #### VISUALIZACIÓN DE LOS DATOS EN EL NAVEGADOR ############################################
 #
@@ -651,9 +647,9 @@ app_datos.css.append_css({
 })
 
 df_datos = melt_data()
-print('DATOS')
+
 names = df_datos.columns
-print("nombre de las columnas: ", names)
+
 
 app_datos.layout = html.Div(
     [

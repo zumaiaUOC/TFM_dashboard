@@ -1,35 +1,35 @@
-{% load plotly_dash %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Cuadro de Mando</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
-	
-</head>
-<body>
+{% load plotly_dash %}
+{% block title %}
+TFM-OSCAR ROJO- Mantenimiento predictivo -  Cuadro de Mando
 
-	<main>
+{% endblock %}
+
+<!-- carsosel start  -->
+<!-- ____________________________________________________________________________________ -->
+
+
+
+{% block main %}
 		<!-- If successful login -->
 		{% if user.is_authenticated %}
 
 		<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
 		<br/>
-		<h4>¡Hola {{ user.username }}!.</h4>
-		<h5>¡Bienvenido a mi TFM del Master de Ciencia de Datos de la UOC.</h5>
+		<h5>¡Hola {{ user.username }}!, Bienvenido a mi TFM del Master de Ciencia de Datos de la UOC.</h5>
 		<h2 style="text-align: center;">Mantenimiento predictivo.</p></h2>
 		<h3 style="text-align: center;">Predicción del fallo de máquinas de producción a partir de datos de un sistema de sensores.</h3>
 		<br/>
 
 		<h6>Indicadores</h6>
-		<button onclick="location.href='exploratory_data_analysis'" target="_blank"  type="button"><h6><strong>EDA</strong>  Expl. Data Analysis</h6></button>
-		<button onclick="location.href='visualizacion'" target="_blank"  type="button"><h6><strong>Visualización</strong></h6></button>
-		<button onclick="location.href='datos'" type="button"><h5><strong>Comparativa sensores</strong></h5></button>
-		<a href="{% url 'submit_prediction' %}"><button type="button"><h5><strong>Predicción</strong></h5></button></a>
-		<a href="{% url 'results' %}"><button type="button"><h5><strong>Resultado</strong></h5></button></a>
+		<button onclick="location.href='exploratory_data_analysis'" target="_blank"  type="button"><strong>EDA</strong>  Expl. Data Analysis</button>
+		<button onclick="location.href='visualizacion'" target="_blank"  type="button"><strong>Visualización</strong></button>
+		<button onclick="location.href='datos'" type="button"><strong>Comparativa sensores</strong></button>
+		<a href="{% url 'submit_prediction' %}"><button type="button"><strong>Predicción</strong></button></a>
+		<a href="{% url 'results' %}"><button type="button"><strong>Resultado</strong></button></a>
 		<!--<button onclick="window.open('exploratory_data_analysis', '_blank')" target="_blank" type="button"><h6><strong>INDICADORES</strong></h6></button>-->
-		<a href="{% static 'TFM/TFM.pdf' %}" target="_blank"><button type="button"><h6><strong>TFM-OSCAR ROJO</strong></h6></button></a>
+		<a href="{% static 'TFM/TFM.pdf' %}" target="_blank"><button type="button"><strong>TFM-OSCAR ROJO</strong></button></a>
 		
 		<!--<button onclick="location.href='facturacion'" type="button"><h5><strong>Facturacion</strong></h5></button>-->
 		<!--<button onclick="location.href='facturacion_agente'" type="button"><h5><strong>Facturacion Cliente</strong></h5></button>-->
@@ -37,7 +37,7 @@
 		<!--<button onclick="location.href='salarios'" type="button"><h5><strong>Salarios</strong></h5></button>-->
 		<br/>
 		<h6>Carga de datos</h6>
-		<a href="{% url 'import_data_file' %}"><button type="button"><h6><strong>Importar archivos</strong></h6></button></a>
+		<a href="{% url 'import_data_file' %}"><button type="button"><strong>Importar archivos</strong></button></a>
 		
 
 		<br/>
@@ -59,19 +59,19 @@
 		<br/>
 
 		<h6>Indicadores</h6>
-		<a href="#"><button type="button"><h6><strong>EDA</strong>  Expl. Data Analysis</h6></button></a>
-		<a href="#"><button type="button"><h6><strong>Visualización</strong></h6></button></a>
-		<a href="#"><button type="button"><h6><strong>Comparativa sensores</strong></h6></button></a>
-		<a href="#"><button type="button"><h6><strong>Predicción</strong></h6></button></a>
-		<a href="#"><button type="button"><h6><strong>Resultado</strong></h6></button></a>
-		<a href="#"><button type="button"><h6><strong>TFM-OSCAR ROJO</strong></h6></button></a>
+		<a href="#"><button type="button"><strong>EDA</strong>  Expl. Data Analysis</button></a>
+		<a href="#"><button type="button"><strong>Visualización</strong></button></a>
+		<a href="#"><button type="button"><strong>Comparativa sensores</strong></button></a>
+		<a href="#"><button type="button"><strong>Predicción</strong></button></a>
+		<a href="#"><button type="button"><strong>Resultado</strong></button></a>
+		<a href="#"><button type="button"><strong>TFM-OSCAR ROJO</strong></button></a>
 		<!--<a href="#"><button type="button"><h5><strong>Facturacion</strong></h5></button></a>-->
 		<!--<a href="#"><button type="button"><h5><strong>Facturacion Cliente</strong></h5></button></a>-->
 		<!--<a href="#"><button type="button"><h5><strong>Ingresos</strong></h5></button></a>-->
 		<!--<a href="#"><button type="button"><h5><strong>Datos</strong></h5></button></a>-->
 		<br/>
 		<h6>Carga de datos</h6>
-		<a href="#"><button type="button"><h6><strong>Importar archivos</strong></h6></button></a>
+		<a href="#"><button type="button"><strong>Importar archivos</strong></button></a>
 
 		<br/>
 
@@ -80,10 +80,7 @@
 
 
 		{% endif %}
-	</main>
+	{% plotly_footer %}
 
-
-</body>
-</html>
-<!--Actuación en el panel de controlHTML-->
+{% endblock %}
 

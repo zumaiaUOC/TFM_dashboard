@@ -1,20 +1,16 @@
-{% load plotly_dash %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Results</title>
-	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+{% load plotly_dash %}
+{% block title %}
+TFM-OSCAR ROJO- Mantenimiento predictivo -  Resultado
+{% endblock %}
+<!-- carsosel start  -->
+<!-- ____________________________________________________________________________________ -->
+{% block main %}
+    {% if user.is_authenticated %}
+<!--<main style="background-color: black; color: white;">-->
 
-	{% plotly_header %}
-</head>
-<body>
-<main style="
-    background-color: black;
-    color: white;">
-
-    <a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
+    <!--<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>-->
     <br>
     <br>
     <div class="container pt-5">
@@ -46,7 +42,7 @@
                         <td>{{ data.sensor_10 }}</td>
                         <td>{{ data.sensor_11 }}</td>
                         <td>{{ data.sensor_12 }}</td>
-                        <td>{{ data.stat }}</td>
+                        <td>{{ data.result_final }}</td>
                     </tr>
                 {% endfor %}
 
@@ -54,6 +50,18 @@
             </table>
         </div>
     </div>
-</main>
-</body>
-</html>
+    {% else %}
+    <br/>
+    <br/>
+    <h3>Resultado</h3>
+    <h3>No has iniciado sesión</h3>
+    <h3>Por favor, inicie sesión para ver las gráficas</h3>
+    <br/>
+    <br/>
+    <button onclick="window.location.href = '{% url 'login' %}';"><h6><strong>Identificate</strong></h6></button>
+
+    {% endif %}
+
+	{% plotly_footer %}
+
+{% endblock %}

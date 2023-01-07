@@ -39,7 +39,6 @@
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -771,7 +770,7 @@ p {
 }
 
 .bg-light {
-  background-color: darkgray !important;
+  background-color: black !important;
   color: white !important;
 
 }

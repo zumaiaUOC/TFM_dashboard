@@ -22,7 +22,6 @@ list_of_files = glob.glob('media/data/*')
 latest_file = max(list_of_files, key=os.path.getctime)
 
 
-print("1250")
 data = pd.DataFrame()
 data = pd.read_csv(latest_file,
                         sep=',', encoding='UTF-8', low_memory=False)
@@ -39,7 +38,7 @@ def variables():
     variables = data.shape[1]
     #print("¿Cuántos variables en el dataset hay? ", variables)
     return variables
-print("1253")
+
 def sensores():
     # count number of columns that column names begin with 'sensor'
     sensores = data.filter(regex='sensor').shape[1]
@@ -50,8 +49,7 @@ print("1254")
 def missing_values():
     missing_values = data.isnull().sum().sum()
     #print("¿Cuántos valores faltantes hay en el dataset? ", missing_values)
-    return missing_values
-print("1255")
+
 # we see that one column (sensor_15) has no values therefore we will delete that column 
 data_clean = data.drop('sensor_15', axis = 1)
 # Al sensor 50 también le falta el 34,95% de los datos, así que también eliminaremos esa columna. 
@@ -61,11 +59,10 @@ data_clean = data_clean.drop('sensor_50', axis =1)
 data_clean = data_clean.drop('Unnamed: 0', axis =1)
 data_clean = data_clean.drop('sensor_00', axis =1) 
 data_clean = data_clean.drop('sensor_51', axis =1) 
-print("1256")
+
 def data_clean_df():
     return data_clean
 
-print("1257")
 def plot_missing_values():
     # plot a heatmap of the missing values
     plt.figure(figsize=(12,10))
@@ -153,7 +150,7 @@ def corr_heat_map():
 l = [] # empty list to store the columns with correlation > 0.75
 for i in data_clean_corr['stat'].index:
     if data_clean_corr['stat'][i] > 0.75:
-        print(i)
+        #print(i)
         l.append(i)
         
 # drop last 2 columns
@@ -178,13 +175,14 @@ def melt_data():
 
 # Split into training data and test data
 X = data_clean[['sensor_02', 'sensor_04', 'sensor_06', 'sensor_10', 'sensor_11', 'sensor_12']]
+
 y = data_clean['stat']
-print("y.head")
+
 print(y.head())
 print("ml-split")
 # train test split with 60% training data and 40% test data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
-print(y_train.head())
+
 
 print("ML-fill")
 #fill NA's with forward fill propogation
@@ -214,14 +212,14 @@ print("ML-unpickle model")
 model = pd.read_pickle('media/model.pickle')
 
 # take input from user
-# sensor_02 = float(input('Ingrese el valor del sensor 02: '))
-# sensor_04 = float(input('Ingrese el valor del sensor 04: '))
-# sensor_06 = float(input('Ingrese el valor del sensor 06: '))
-# sensor_10 = float(input('Ingrese el valor del sensor 10: '))
-# sensor_11 = float(input('Ingrese el valor del sensor 11: '))
-# sensor_12 = float(input('Ingrese el valor del sensor 12: '))
+#sensor_02 = float(input('Ingrese el valor del sensor 02: '))
+#sensor_04 = float(input('Ingrese el valor del sensor 04: '))
+#sensor_06 = float(input('Ingrese el valor del sensor 06: '))
+#sensor_10 = float(input('Ingrese el valor del sensor 10: '))
+#sensor_11 = float(input('Ingrese el valor del sensor 11: '))
+#sensor_12 = float(input('Ingrese el valor del sensor 12: '))
 
-# result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]]) # make prediction
-# print("El resultado es: ", result)
-# print("El resultado es: ", result[0])
-# print("result", result)
+#resultado_final = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]]) # make prediction
+#print("El resultado es: ", resultado_final)
+#print("El resultado es: ", resultado_final[0])
+

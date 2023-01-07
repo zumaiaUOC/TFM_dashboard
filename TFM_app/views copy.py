@@ -56,9 +56,9 @@ def predict_chances(request):
         # Unpickle model
         model = pd.read_pickle(r"media/model.pickle")
         # Make prediction
-        result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]])
+        result_final = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]])
 
-        stat = result[0]
+        stat = result_final[0]
         print("stat", stat)
         print("sensor_02", sensor_02)
         print("sensor_04", sensor_04)
@@ -71,7 +71,7 @@ def predict_chances(request):
         PredResults.objects.create(sensor_02=sensor_02, sensor_04=sensor_04, sensor_06=sensor_06,
                                    sensor_10=sensor_10, sensor_11=sensor_11, sensor_12=sensor_12, stat=stat)
 
-        return render ({'result': stat, 
+        return render ({'result_final': stat, 
                              'sensor_02': sensor_02,
                              'sensor_04': sensor_04, 
                              'sensor_06': sensor_06, 
@@ -80,7 +80,7 @@ def predict_chances(request):
                              'sensor_12': sensor_12},
                             safe=False)
     else:
-        return JsonResponse({'result': 'Error'})
+        return JsonResponse({'result_final': 'Error'})
 
 
 def view_results(request):

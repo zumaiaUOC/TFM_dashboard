@@ -18,8 +18,8 @@
 
 # AWS
 
-* Entramos en AWS de panoramicteam
-  usuario: info@panoramicteam.com
+* Entramos en AWS de OscarRojo Martín
+  usuario: zumaia@uoc.edu
 
 ### Crear par de claves
 

@@ -1,118 +1,129 @@
-{% load plotly_dash %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Cuadro de Mando</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
-	
-</head>
-<body>
-<main>
-<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Resultados de las predicciones</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5>Entrada de predicción:</h5>
-                <div>sensor_02: <span id="s1"></span></div>
-                <div>sensor_04: <span id="s2"></span></div>
-                <div>sensor_06: <span id="s3"></span></div>
-                <div>sensor_10: <span id="s4"></span></div>
-                <div>sensor_11: <span id="s5"></span></div>
-                <div>sensor_12: <span id="s6"></span></div>
+{% load plotly_dash %}
+{% block title %}
+TFM-OSCAR ROJO- Mantenimiento predictivo -  Predicción
 
-                <h5 class="pt-3">Predicción de sensores:</h5>
-                <div id="prediction"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" href = "{% url 'results' %}" class="btn btn-primary">Resultados</button>
-                <a class="btn btn-primary" href="/results" role="button">Resultados</a>
+{% endblock %}
+<!-- carsosel start  -->
+<!-- ____________________________________________________________________________________ -->
+
+
+{% block main %}
+    {% if user.is_authenticated %}
+    <!--<a href="{% url 'home' %}"> <img src="{% static 'logo.gif' %}" class="img-fluid" alt="Home"/></a>-->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: grey;">
+                    <h5 class="modal-title" style="background-color: grey;" id="exampleModalLabel">Resultados de las predicciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="background-color: grey;">
+                    <h5>Entrada de predicción:</h5>
+                    <div>sensor_02: <span id="s1"></span></div>
+                    <div>sensor_04: <span id="s2"></span></div>
+                    <div>sensor_06: <span id="s3"></span></div>
+                    <div>sensor_10: <span id="s4"></span></div>
+                    <div>sensor_11: <span id="s5"></span></div>
+                    <div>sensor_12: <span id="s6"></span></div>
+
+                    <h5 class="pt-3">Predicción de sensores:</h5>
+                    <div id="prediction"></div>
+                </div>
+                <div class="modal-footer" style="background-color: grey;">
+                    <a class="btn btn-secondary" data-dismiss="modal">Cerrar</button></a>
+                    <a class="btn btn-primary" href="/results" role="button"><strong>Resultados</strong></a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container pt-5">
-    <div class="row justify-content-md-center">
-        <div class="col-md-4">
-            <h1>Predicción de la rotura de la máquina</h1>
-            <form action="" id="post-form">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="sensor_02">sensor_02</label>
-                    <input type="number" step="0.1" class="form-control" id="sensor_02" placeholder="" required>
-                </div>
-                <div class="form-group">
-                    <label for="sensor_04">sensor_04</label>
-                    <input type="number" step="0.1" class="form-control" id="sensor_04" placeholder="" required>
-                </div>
-                <div class="form-group">
-                    <label for="sensor_06">sensor_06</label>
-                    <input type="number" step="0.1" class="form-control" id="sensor_06" placeholder="" required>
-                </div>
-                <div class="form-group">
-                    <label for="sensor_10">sensor_10</label>
-                    <input type="number" step="0.1" class="form-control" id="sensor_10" placeholder="" required>
-                </div>
-                <div class="form-group">
-                    <label for="sensor_11">sensor_11</label>
-                    <input type="number" step="0.1" class="form-control" id="sensor_11" placeholder="" required>
-                </div>
-                <div class="form-group">
-                    <label for="sensor_12">sensor_12</label>
-                    <input type="number" step="0.1" class="form-control" id="sensor_12" placeholder="" required>
-                </div>
-                <button type="submit" value="Submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Enviar</button>
-            </form>
+    <div class="container pt-5">
+        <div class="row justify-content-md-center">
+            <div class="col-md-12">
+                <h1>Predicción de la rotura de la máquina</h1>
+                <form action="" id="post-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="sensor_02">sensor_02</label>
+                        <input type="number" step="0.1" class="form-control" id="sensor_02" placeholder="mean: 50.867392    min: 33.159720    max: 56.03299" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sensor_04">sensor_04</label>
+                        <input type="number" step="0.1" class="form-control" id="sensor_04" placeholder="mean: 590.673936   min:  2.798032    max: 800.00000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sensor_06">sensor_06</label>
+                        <input type="number" step="0.1" class="form-control" id="sensor_06" placeholder="mean: 13.501537    min:  0.014468    max: 22.25116" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sensor_10">sensor_10</label>
+                        <input type="number" step="0.1" class="form-control" id="sensor_10" placeholder="mean: 41.470339    min:  0.000000    max: 76.10686" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sensor_11">sensor_11</label>
+                        <input type="number" step="0.1" class="form-control" id="sensor_11" placeholder="mean: 41.918319    min:  0.000000    max: 60.00000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sensor_12">sensor_12</label>
+                        <input type="number" step="0.1" class="form-control" id="sensor_12" placeholder="mean: 29.136975    min:  0.000000    max: 45.00000" required>
+                    </div>
+                    <button type="submit" value="Submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Enviar</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    $(document).on('submit', '#post-form',function(e){
-        e.preventDefault();
-        $.ajax({
-            type:'POST',
-            url:'{% url "submit_prediction" %}',
-            data:{
-                sensor_02:$('sensor_02').val(),
-                sensor_04:$('sensor_04').val(),
-                sensor_06:$('sensor_06').val(),
-                sensor_10:$('sensor_10').val(),
-                sensor_11:$('sensor_11').val(),
-                sensor_12:$('sensor_12').val(),
+    <script>
+        $(document).on('submit', '#post-form',function(e){
+            e.preventDefault();
+            $.ajax({
+                type:'POST',
+                url:'{% url "submit_prediction" %}',
+                data:{
+                    sensor_02:$('sensor_02').val(),
+                    sensor_04:$('sensor_04').val(),
+                    sensor_06:$('sensor_06').val(),
+                    sensor_10:$('sensor_10').val(),
+                    sensor_11:$('sensor_11').val(),
+                    sensor_12:$('sensor_12').val(),
 
-                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-                action: 'post'
-            },
-            success:function(json) {
-                document.forms["post-form"].reset();
-                document.getElementById("prediction").innerHTML = json['result']
-                document.getElementById("s1").innerHTML = json['sensor_02']
-                document.getElementById("s2").innerHTML = json['sensor_04']
-                document.getElementById("s3").innerHTML = json['sensor_06']
-                document.getElementById("s4").innerHTML = json['sensor_10']
-                document.getElementById("s5").innerHTML = json['sensor_11']
-                document.getElementById("s6").innerHTML = json['sensor_12']
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    action: 'post'
+                },
+                success:function(json) {
+                    document.forms["post-form"].reset();
+                    document.getElementById("prediction").innerHTML = json['result_final']
+                    document.getElementById("s1").innerHTML = json['sensor_02']
+                    document.getElementById("s2").innerHTML = json['sensor_04']
+                    document.getElementById("s3").innerHTML = json['sensor_06']
+                    document.getElementById("s4").innerHTML = json['sensor_10']
+                    document.getElementById("s5").innerHTML = json['sensor_11']
+                    document.getElementById("s6").innerHTML = json['sensor_12']
 
-            },
-            error : function(xhr,errmsg,err) {
+                },
+                error : function(xhr,errmsg,err) {
 
-            }
-        });
-    })
-</script>
+                }
+            });
+        })
+    </script>
+    {% else %}
+    <br/>
+    <br/>
+    <h3>Predicción</h3>
+    <h3>No has iniciado sesión</h3>
+    <h3>Por favor, inicie sesión para ver las gráficas</h3>
+    <br/>
+    <br/>
+    <button onclick="window.location.href = '{% url 'login' %}';"><h6><strong>Identificate</strong></h6></button>
 
-</main>
-</body>
-</html>
+    {% endif %}
+
+	{% plotly_footer %}
+
+{% endblock %}

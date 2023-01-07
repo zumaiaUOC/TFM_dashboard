@@ -6,50 +6,57 @@
     <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" >
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>TFM-OSCAR ROJO- Mantenimiento predictivo -  Cuadro de Mando</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    
+    <!--<link rel="stylesheet" type="text/css" href="{% static '002_bootstrap-4.4.1.css' %}"/>-->
+    
 	<link rel="stylesheet" type="text/css" href="{% static 's1.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
     </head>
 	<STYLE>A {text-decoration: none;} </STYLE>
     <body>
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="
+    background-color: white;
+">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="{% url 'home' %}"> <img src="{% static 'logo_mini.gif' %}" class="img-fluid" alt="Home"/></a>
+                    <button onclick="location.href='/home'" type="button"><strong>inicio</strong></button>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/exploratory_data_analysis">EDA <span class="sr-only">(current)</span></a>
+                <li class="nav-item float-right">
+                    <button onclick="location.href='/exploratory_data_analysis'" type="button"><strong>EDA</strong></button>
                 </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="/visualizacion">Visualización</a>
+                <li class="nav-item float-right">
+                    <button onclick="location.href='/visualizacion'" type="button"><strong>Visualización</strong></button>
                 </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="/datos">Comparativa Sensores</a>
+                <li class="nav-item float-right">
+                    <button onclick="location.href='/datos'" type="button"><strong>Comparativa Sensores</strong></button>
                 </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="/datos">Predicción</a>
+                <li class="nav-item float-right">
+                    <button onclick="location.href='/predict'" type="button"><strong>Predicción</strong></button>
                 </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="/results">Resultado</a>
+                <li class="nav-item float-right">
+                    <button onclick="location.href='/results'" type="button"><strong>Resultado</strong></button>
                 </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="/import_data_file">Importar archivos <span class="sr-only">(current)</span></a>
+                <li class="nav-item float-right">
+                    <button onclick="location.href='/import_data_file'" type="button"><strong>Importar archivos </strong></button>
                 </li>
-				<li class="nav-item">
-                    <a class="nav-link" href="{% static 'TFM/TFM.pdf' %}" target="_blank">TFM-OSCAR ROJO</a>
+                <li class="nav-item float-right">
+                    <a href="{% static 'TFM/TFM.pdf' %}" target="_blank"><button type="button"><strong>TFM-OSCAR ROJO</strong></button></a>
+                    <!--<button onclick="location.href='{% static '/TFM/TFM.pdf' %}'" target="_blank" type="button"><strong>TFM-OSCAR ROJO</strong></button>-->
                 </li>
             </ul>
+            <a href="{% url 'home' %}"> <img src="{% static 'logo_mini.gif' %}" class="img-fluid" alt="Home"/></a>
         </div>
     </nav>
 	

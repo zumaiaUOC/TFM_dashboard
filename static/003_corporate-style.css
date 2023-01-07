@@ -28,7 +28,6 @@ html {
 /* Body
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 body {
-  # max-width: 900px;
   font-family: "Calisto MT" !important;
   background: white
   /*background-color: transparent; /* By default the body color is white, making any transparent component, actually white!*/

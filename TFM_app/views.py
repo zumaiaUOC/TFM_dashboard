@@ -47,12 +47,15 @@ def predict_chances(request):
     if request.method == "POST":
 
         # Receive data from client
-        sensor_02 = int(request.POST.get('sensor_02'))
-        sensor_04 = int(request.POST.get('sensor_04'))
-        sensor_06 = int(request.POST.get('sensor_06'))
-        sensor_10 = int(request.POST.get('sensor_10'))
-        sensor_11 = int(request.POST.get('sensor_11'))
-        sensor_12 = int(request.POST.get('sensor_12'))
+        sensor_02 = str(request.POST.get('sensor_02'))
+        sensor_04 = str(request.POST.get('sensor_04'))
+        sensor_06 = str(request.POST.get('sensor_06'))
+        sensor_10 = str(request.POST.get('sensor_10'))
+        sensor_11 = str(request.POST.get('sensor_11'))
+        sensor_12 = str(request.POST.get('sensor_12'))
+        
+        global result_final
+        result_final = ''
 
         try:
 
@@ -67,24 +70,28 @@ def predict_chances(request):
             x = x.reshape(1, -1)
 
             print(x)
-            result = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]])
-            print(result)
+            
+            
+            
+            result_final = model.predict([[sensor_02, sensor_04, sensor_06, sensor_10, sensor_11, sensor_12]])
+            print("El resultado es")
             
         except Exception as e:
             print(e)
             print("something went wrong")
 
+        global res
         res = ''
-        if result[0] == 0:
+        if int(float(result_final)) == 0:
             res = 'No Disease'
-        elif result[0] == 1:
+        elif int(float(result_final))  == 1:
             res = 'You Have Disease'
         else:
             res = 'resto'
 
         print(res)
         context = {
-            'data': result[0],
+            'data': result_final,
             'q': res,
         }
         return render(request, 'results.html', context)
