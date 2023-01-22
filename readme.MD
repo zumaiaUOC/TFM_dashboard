@@ -11,7 +11,13 @@
 * Usuario: admin
 * Contraseña: pass12345
 
-## Subir a Gitlab
+## Contraseña invitado
+
+  * Usuario: invitado
+  * Contraseña: 12345invict
+
+
+## Subir a Github
 
 ##########################################
 ##########################################
@@ -61,7 +67,7 @@
 
     * Tras conectar... sudo apt-get update
     * clonar el repositorio
-    * git clone https://gitlab.com/orojo1/panoramic_dash.git
+    * git clone https://github.com/zumaiaUOC/TFM_dashboard.git
     * Acceder a la carpeta del repositorio clonado
     * Generar entorno virtuarl
       * python3 -m venv my_venv
