@@ -55,7 +55,7 @@ app_exploratory_data_analysis.layout = html.Div([
 
             
 
-        ], className="two-third column", id='title1'),
+        ], className="column", id='title1'),
 
 
     html.Div([
@@ -88,7 +88,7 @@ app_exploratory_data_analysis.layout = html.Div([
                         ),
                     ]), ], ),
 
-        ], className="card_container three columns",
+        ], className="card_container two columns",
         ),
 
 
@@ -122,7 +122,7 @@ app_exploratory_data_analysis.layout = html.Div([
                         ),
                     ]), ],),
 
-        ], className="card_container three columns",
+        ], className="card_container two columns",
         ),
 
 
@@ -154,7 +154,7 @@ app_exploratory_data_analysis.layout = html.Div([
                         ),
                     ]), ],),
 
-        ], className="card_container three columns",
+        ], className="card_container two columns",
         ),
 
         html.Div([
@@ -190,7 +190,7 @@ app_exploratory_data_analysis.layout = html.Div([
                         ),
                     ]), ],),
 
-        ], className="card_container three columns",
+        ], className="card_container two columns",
 
         ),
 
@@ -215,13 +215,16 @@ app_exploratory_data_analysis.layout = html.Div([
                               'textAlign': 'center',
                               'color': 'black'}),
                 dash_table.DataTable(df.to_dict('records'), [
-                    {"name": i, "id": i} for i in df.columns], id='tbl'),
+                    {"name": i, "id": i} for i in df.columns], id='tbl', 
+                                     css={'position': 'relative',
+                                        'font-size': 'x-small'}),
                 dbc.Alert(id='tbl_out', 
                           style={'backgroundColor': '#eeeeee' , 
-                                 'border-color': '#eeeeee'}),
+                                 'border-color': '#eeeeee',
+                                 'font-size': '12px'}),
             ]),
 
-        ], className="card_container eleven columns",
+        ], className="card_container twelve columns",
         ),
 
 
